@@ -66,8 +66,9 @@ public class DexData {
      * Verifies the given magic number.
      */
     private static boolean verifyMagic(byte[] magic) {
-        return Arrays.equals(magic, HeaderItem.DEX_FILE_MAGIC) ||
-            Arrays.equals(magic, HeaderItem.DEX_FILE_MAGIC_API_13);
+        return Arrays.equals(magic, HeaderItem.DEX_FILE_MAGIC_API) ||
+            Arrays.equals(magic, HeaderItem.DEX_FILE_MAGIC_22) ||
+                Arrays.equals(magic, HeaderItem.DEX_FILE_MAGIC_API_13);
     }
 
     /**
@@ -568,7 +569,9 @@ public class DexData {
         public int classDefsSize, classDefsOff;
 
         /* expected magic values */
-        public static final byte[] DEX_FILE_MAGIC = {
+        public static final byte[] DEX_FILE_MAGIC_API = {
+                0x64, 0x65, 0x78, 0x0a, 0x30, 0x33, 0x37, 0x00 };
+        public static final byte[] DEX_FILE_MAGIC_22 = {
             0x64, 0x65, 0x78, 0x0a, 0x30, 0x33, 0x36, 0x00 };
         public static final byte[] DEX_FILE_MAGIC_API_13 = {
             0x64, 0x65, 0x78, 0x0a, 0x30, 0x33, 0x35, 0x00 };
